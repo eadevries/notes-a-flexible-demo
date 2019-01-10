@@ -147,30 +147,32 @@ class Index extends React.Component {
                         margin-top: ${sizes.md};
                     }
                     p {
-                        line-height: 2.5rem;
-                        margin-bottom: ${sizes.md};
+                        font-size: 1.4rem;
+                        line-height: 2.2rem;
+                        margin-bottom: ${sizes.sm};
                     }
                     a {
                         ${linkStyles}
                     }
                     .container {
-                        display: grid;
-                        grid-column-gap: ${sizes.lg};
-                        grid-template-columns: 3fr 1fr;
-                        grid-template-areas "technologies creator"
-                                            "technologies demo";
-                    }
-                    .creator {
-                        align-self: start;
-                        grid-area: creator;
-                        padding-bottom: ${sizes.md};
-                    }
-                    .technologies {
-                        grid-area: technologies;
+                        display: flex;
+                        flex-direction: column;
                     }
                     .demo-link {
-                        grid-area: demo;
-                        justify-self: center;
+                        order: 2;
+                    }
+                    .technologies {
+                        order: 3;
+                    }
+                    .features {
+                        order: 4;
+                    }
+                    .repo {
+                        order: 5;
+                    }
+                    .creator {
+                        order: 6;
+                        padding: ${sizes.md} 0;
                     }
                     .demo-link button {
                         border: 1px solid ${colors.sd};
@@ -189,13 +191,41 @@ class Index extends React.Component {
                     .demo-link button:hover {
                         cursor: pointer;
                     }
-                    .features {
-                        grid-column-start: 1;
-                        grid-column-end: 2;
-                    }
-                    .repo {
-                        grid-column-start: 1;
-                        grid-column-end: 2;
+
+
+                    @media (min-width: ${sizes.breakpoint}) {
+                        p {
+                            font-size: 1.6rem;
+                            line-height: 2.5rem;
+                            margin-bottom: ${sizes.md};
+                        }
+                        .container {
+                            display: grid;
+                            grid-column-gap: ${sizes.lg};
+                            grid-template-columns: 3fr 1fr;
+                            grid-template-areas "technologies creator"
+                                                "technologies demo";
+                        }
+                        .demo-link {
+                            grid-area: demo;
+                            justify-self: center;
+                        }
+                        .creator {
+                            align-self: start;
+                            grid-area: creator;
+                            padding: 0 0 ${sizes.md} 0;
+                        }
+                        .technologies {
+                            grid-area: technologies;
+                        }
+                        .features {
+                            grid-column-start: 1;
+                            grid-column-end: 2;
+                        }
+                        .repo {
+                            grid-column-start: 1;
+                            grid-column-end: 2;
+                        }
                     }
                 `}</style>
             </Layout>

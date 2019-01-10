@@ -17,7 +17,8 @@ const sizes = {
     sm: "0.7rem",
     md: "1.6rem",
     lg: "3.2rem",
-    xl: "6.4rem"
+    xl: "6.4rem",
+    breakpoint: "700px"
 };
 
 const linkStyles = `

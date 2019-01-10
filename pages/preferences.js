@@ -66,18 +66,21 @@ class Preferences extends React.Component {
             <Layout>
                 <Header text="preferences" fontSize="3.2rem" />
                 <div className="preferences-list">
-                    <label htmlFor="defaultSort">Default sort:</label>
+                    <label className="default-sort" htmlFor="defaultSort">
+                        Default sort:
+                    </label>
                     {this.props.user && this.state.defaultSort !== undefined && (
                         <select
+                            className="sort-select"
                             name="defaultSort"
                             value={this.state.defaultSort}
                             onChange={this.onDefaultSortChanged}
                         >
                             <option value={sortOptions.CREATED_DESC}>
-                                Created (Descending)
+                                Created (Newest-Oldest)
                             </option>
                             <option value={sortOptions.CREATED_ASC}>
-                                Created (Ascending)
+                                Created (Oldest-Newest)
                             </option>
                             <option value={sortOptions.TITLE_A_Z}>
                                 Title (A-Z)
@@ -87,21 +90,25 @@ class Preferences extends React.Component {
                             </option>
                         </select>
                     )}
-                    <label htmlFor="saveSort">
+                    <label className="save-sort" htmlFor="saveSort">
                         Save selected sort (ignoring default):
                     </label>
                     {this.props.user && this.state.saveSort !== undefined && (
                         <Switch
                             checked={this.state.saveSort}
+                            className="save-sort-input"
                             id="saveSort"
                             onChange={this.onSaveSortChanged}
                             onColor={colors.tr}
                         />
                     )}
-                    <label htmlFor="saveFilter">Save filter value:</label>
+                    <label className="save-filter" htmlFor="saveFilter">
+                        Save filter value:
+                    </label>
                     {this.props.user && this.state.saveFilter !== undefined && (
                         <Switch
                             checked={this.state.saveFilter}
+                            className="save-filter-input"
                             id="saveFilter"
                             onChange={this.onSaveFilterChanged}
                             onColor={colors.tr}
@@ -116,23 +123,80 @@ class Preferences extends React.Component {
                     .preferences-list {
                         align-items: center;
                         display: grid;
-                        font-size: 1.8rem;
+                        font-size: 1.4rem;
                         grid-column-gap: ${sizes.md};
-                        grid-row-gap: ${sizes.lg};
-                        grid-template-columns: 1fr 1fr;
-                        padding: ${sizes.md} 0;
-                    }
-                    label {
-                        grid-column-start: 1;
-                        grid-column-end: 2;
-                        justify-self: end;
+                        grid-row-gap: ${sizes.sm};
+                        grid-template-areas:
+                            "default-sort ."
+                            "sort-select sort-select"
+                            "save-sort ."
+                            "save-sort-input save-sort-input"
+                            "save-filter ."
+                            "save-filter-input save-filter-input";
+                        padding: ${sizes.md} 0 ${sizes.md} ${sizes.sm};
                     }
                     select {
                         background-color: #dddddd;
                         border: none;
                         font-family: ${fonts.main};
-                        font-size: 1.8rem;
+                        font-size: 1.4rem;
                         justify-self: start;
+                    }
+
+                    .default-sort {
+                        grid-area: default-sort;
+                    }
+                    .sort-select {
+                        grid-area: sort-select;
+                    }
+                    .save-sort {
+                        grid-area: save-sort;
+                        margin-top: ${sizes.md};
+                    }
+
+                    .save-filter {
+                        grid-area: save-filter;
+                        margin-top: ${sizes.md};
+                    }
+
+                    @media (min-width: ${sizes.breakpoint}) {
+                        .preferences-list {
+                            align-items: center;
+                            display: grid;
+                            font-size: 1.8rem;
+                            grid-column-gap: ${sizes.md};
+                            grid-row-gap: ${sizes.lg};
+                            grid-template-columns: 1fr 1fr;
+                            grid-template-areas:
+                                "default-sort sort-select"
+                                "save-sort save-sort-input"
+                                "save-filter save-filter-input";
+                            padding: ${sizes.md} 0;
+                        }
+
+                        .default-sort {
+                            justify-self: end;
+                        }
+                        .sort-select {
+                            font-size: 1.8rem;
+                        }
+                        .save-sort {
+                            margin: 0;
+                            justify-self: end;
+                        }
+                        .save-filter {
+                            margin: 0;
+                            justify-self: end;
+                        }
+                    }
+                `}</style>
+                {/* Global styles needed for checkbox widget */}
+                <style global jsx>{`
+                    .save-sort-input {
+                        grid-area: save-sort-input;
+                    }
+                    .save-filter-input {
+                        grid-area: save-filter-input;
                     }
                 `}</style>
             </Layout>

@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import NavBar from "./NavBar";
-import { globalStyles } from "../styles/base";
+import { sizes, globalStyles } from "../styles/base";
 
 const Layout = props => (
     <React.Fragment>
@@ -26,8 +26,13 @@ const Layout = props => (
         <div>{props.children}</div>
         <style jsx>{`
             div {
-                margin: 0 auto;
                 max-width: 800px;
+                padding: 0 ${sizes.sm};
+                width: 100vw;
+            }
+
+            @media (min-width: 800px) {
+                margin: 0 auto;
                 width: 90vw;
             }
         `}</style>

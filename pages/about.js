@@ -1,7 +1,7 @@
 import Bio from "../components/Bio";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
-import { colors, sizes, linkStyles } from "../styles/base";
+import { colors, fonts, sizes, linkStyles } from "../styles/base";
 
 const About = () => (
     <Layout>
@@ -15,7 +15,7 @@ const About = () => (
                     >
                         Notes (a flexible demo)
                     </a>{" "}
-                    was created by Elliot de Vries
+                    was created by Elliot de Vries.
                 </p>
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -28,8 +28,11 @@ const About = () => (
                     possimus molestiae suscipit totam!
                 </p>
                 <div className="contact">
-                    To contact Elliot about questions or opportunities, please
-                    feel free to email him at email@address.com
+                    <h3>contact</h3>
+                    <p>
+                        To contact Elliot about questions or opportunities,
+                        please feel free to email him at email@address.com
+                    </p>
                 </div>
             </div>
             <div className="bio">
@@ -44,13 +47,26 @@ const About = () => (
             a {
                 ${linkStyles}
             }
-            .container {
-                display: grid;
-                grid-template-columns: 2fr 1fr;
+            h3 {
+                color: ${colors.sd};
+                font-family: ${fonts.fancy};
+                font-size: 2.4rem;
+                margin-bottom: ${sizes.md};
+                margin-top: ${sizes.md};
             }
             .bio {
-                grid-column-start: 2;
-                grid-column-end: 3;
+                padding: ${sizes.md} 0;
+            }
+            @media (min-width: ${sizes.breakpoint}) {
+                .container {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                }
+                .bio {
+                    grid-column-start: 2;
+                    grid-column-end: 3;
+                    padding: 0 0 ${sizes.md} 0;
+                }
             }
         `}</style>
     </Layout>

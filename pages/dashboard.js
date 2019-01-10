@@ -167,16 +167,22 @@ class Dashboard extends React.Component {
                             onClick={this.onAddClicked}
                         >
                             <FontAwesomeIcon
+                                aria-label={"Add a note"}
                                 className={"add-icon"}
                                 icon={"plus-circle"}
                             />
-                            <div className="add-text">Add a note</div>
+                            <div className="add-text">Add</div>
                         </button>
                     </div>
                     <div className="right-controls">
                         <div className={"filter-control"}>
                             <label>
-                                Filter{" "}
+                                <FontAwesomeIcon
+                                    aria-label={"Filter notes"}
+                                    className={"filter-icon"}
+                                    icon={"filter"}
+                                />
+                                <div className="filter-text">Filter</div>
                                 <input
                                     type="text"
                                     onBlur={this.onFilterBlur}
@@ -187,7 +193,12 @@ class Dashboard extends React.Component {
                         </div>
                         <div className={"sort-control"}>
                             <label>
-                                Sort{" "}
+                                <FontAwesomeIcon
+                                    aria-label={"Change sort method"}
+                                    className={"sort-icon"}
+                                    icon={"sort-amount-down"}
+                                />
+                                <div className="sort-text">Sort</div>
                                 <select
                                     disabled={
                                         !(
@@ -224,34 +235,11 @@ class Dashboard extends React.Component {
                 </NoteList>
                 <style jsx>{`
                     .list-controls {
-                        align-items: center;
-                        // border: 1px solid gray;
+                        align-items: start;
                         display: flex;
+                        flex-direction: column;
                         justify-content: space-between;
-                        margin-bottom: ${sizes.md};
-                        margin-top: ${sizes.lg};
                         padding: ${sizes.sm};
-                    }
-                    .right-controls {
-                        align-items: center;
-                        display: flex;
-                        font-size: 1.8rem;
-                        justify-content: flex-end;
-                    }
-                    .filter-control {
-                        padding-right: ${sizes.sm};
-                    }
-                    .filter-control input {
-                        border: none;
-                        background: #dddddd;
-                        font-family: ${fonts.main};
-                        padding: ${sizes.xs};
-                    }
-                    .sort-control select {
-                        background: #dddddd;
-                        border: none;
-                        font-family: ${fonts.main};
-                        padding: ${sizes.xs};
                     }
                     .add-button {
                         align-items: center;
@@ -261,8 +249,9 @@ class Dashboard extends React.Component {
                         cursor: pointer;
                         display: flex;
                         font-family: ${fonts.main};
-                        font-size: 2.5rem;
+                        font-size: 2rem;
                         justify-content: flex-start;
+                        margin-bottom: ${sizes.md};
                     }
                     .add-button:hover {
                         color: ${colors.tr};
@@ -272,16 +261,88 @@ class Dashboard extends React.Component {
                         cursor: not-allowed;
                     }
                     .add-text {
-                        font-size: 1.8rem;
+                        font-size: 1.4rem;
+                        padding: ${sizes.xs};
+                    }
+                    .right-controls {
+                        align-items: baseline;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                    }
+                    .filter-control {
+                        font-size: 2rem;
+                        margin-bottom: ${sizes.md};
+                        padding-right: ${sizes.sm};
+                    }
+                    .filter-control label {
+                        display: flex;
+                    }
+                    .filter-control input {
+                        border: none;
+                        background: #dddddd;
+                        font-family: ${fonts.main};
+                        padding: ${sizes.xs};
+                    }
+                    .sort-control {
+                        font-size: 2rem;
+                    }
+                    .sort-control label {
+                        display: flex;
+                    }
+                    .sort-control select {
+                        background: #dddddd;
+                        border: none;
+                        font-family: ${fonts.main};
+                        padding: ${sizes.xs};
+                    }
+                    .filter-text,
+                    .sort-text {
+                        font-size: 1.4rem;
+                        margin-right: ${sizes.sm};
+                        padding: ${sizes.xs};
+                        width: 5rem;
+                    }
+
+                    @media (min-width: ${sizes.breakpoint}) {
+                        .list-controls {
+                            flex-direction: row;
+                            margin-bottom: ${sizes.sm};
+                            margin-top: ${sizes.lg};
+                        }
+                        .add-button {
+                            font-size: 2.5rem;
+                            margin: 0;
+                        }
+                        .add-text,
+                        .filter-text,
+                        .sort-text {
+                            font-size: 1.8rem;
+                        }
+                        .right-controls {
+                            flex-direction: row;
+                        }
+                        .filter-control {
+                            font-size: 2.5rem;
+                            margin-bottom: 0;
+                            margin-right: ${sizes.sm};
+                        }
+                        .sort-control {
+                            font-size: 2.5rem;
+                        }
                     }
                 `}</style>
                 {/* Global (non-scoped) CSS needed for the FontAwesome icon: */}
                 <style global jsx>{`
-                    .add-icon {
+                    .add-icon,
+                    .filter-icon,
+                    .sort-icon {
                         color: ${colors.sd};
-                        display: block;
                         margin-right: ${sizes.sm};
                         padding: 0;
+                    }
+                    .add-icon {
+                        display: block;
                     }
                     .add-button:hover .add-icon {
                         color: ${colors.tr};

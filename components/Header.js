@@ -8,7 +8,7 @@ const Header = props => (
         </div>
         <style jsx>{`
             .header {
-                margin-bottom: ${sizes.lg};
+                margin-bottom: ${sizes.md};
                 padding-left: ${sizes.xs};
             }
             h1 {
@@ -16,6 +16,12 @@ const Header = props => (
                 font-family: ${fonts.fancy};
                 font-size: ${props.fontSize || "4rem"};
                 margin-bottom: ${sizes.xs};
+            }
+
+            @media (min-width: ${sizes.breakpoint}) {
+                .header {
+                    margin-bottom: ${sizes.lg};
+                }
             }
         `}</style>
     </React.Fragment>
