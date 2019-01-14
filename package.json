@@ -24,6 +24,7 @@
         "react-dom": "^16.7.0",
         "react-markdown": "^4.0.4",
         "react-redux": "^6.0.0",
+        "react-spring": "^7.2.8",
         "react-switch": "^3.0.4",
         "redux": "^4.0.1",
         "redux-thunk": "^2.3.0",

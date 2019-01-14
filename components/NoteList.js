@@ -1,3 +1,4 @@
+import { Transition, animated } from "react-spring";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Note from "./Note";
@@ -11,11 +12,22 @@ class NoteList extends React.Component {
         return (
             <React.Fragment>
                 {this.props.children}
-                <div>
+                <div class="container">
                     {this.props.notes.length > 0 || this.props.children ? (
-                        this.props.notes.map(note => (
-                            <Note key={note.id} {...note} />
-                        ))
+                        <Transition
+                            items={this.props.notes}
+                            keys={note => note.id}
+                            native
+                            from={{ opacity: 0, height: 0 }}
+                            enter={{ opacity: 1, height: "auto" }}
+                            leave={{ opacity: 0, height: 0 }}
+                        >
+                            {item => props => (
+                                <animated.div style={props}>
+                                    <Note key={item.id} {...item} />
+                                </animated.div>
+                            )}
+                        </Transition>
                     ) : (
                         <div className="empty-list">
                             <p>No notes found!</p>
@@ -31,6 +43,9 @@ class NoteList extends React.Component {
                     )}
                 </div>
                 <style jsx>{`
+                    .container {
+                        position: relative;
+                    }
                     .empty-list {
                         background-color: #333;
                         padding: ${sizes.md};

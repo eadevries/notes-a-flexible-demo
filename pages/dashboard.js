@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Transition, animated } from "react-spring";
 
 import Header from "../components/Header";
 import Layout from "../components/Layout";
@@ -227,10 +228,23 @@ class Dashboard extends React.Component {
                     </div>
                 </div>
                 <NoteList {...noteListProps}>
-                    {this.state.addingNote && (
-                        <React.Fragment>
-                            <NewNote {...newNoteProps} />
-                        </React.Fragment>
+                    {true && (
+                        <Transition
+                            items={this.state.addingNote}
+                            native
+                            from={{ opacity: 0, height: 0 }}
+                            enter={{ opacity: 1, height: "auto" }}
+                            leave={{ opacity: 0, height: 0 }}
+                        >
+                            {addingNote =>
+                                addingNote &&
+                                (props => (
+                                    <animated.div style={props}>
+                                        <NewNote {...newNoteProps} />
+                                    </animated.div>
+                                ))
+                            }
+                        </Transition>
                     )}
                 </NoteList>
                 <style jsx>{`
