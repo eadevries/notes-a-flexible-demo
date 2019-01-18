@@ -150,6 +150,7 @@ class Index extends React.Component {
                         font-size: 1.4rem;
                         line-height: 2.2rem;
                         margin-bottom: ${sizes.sm};
+                        text-align: justify;
                     }
                     a {
                         ${linkStyles}
@@ -157,6 +158,8 @@ class Index extends React.Component {
                     .container {
                         display: flex;
                         flex-direction: column;
+                        padding-left: ${sizes.md};
+                        padding-right: ${sizes.md};
                     }
                     .demo-link {
                         order: 2;

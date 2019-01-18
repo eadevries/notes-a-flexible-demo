@@ -12,7 +12,7 @@ class NoteList extends React.Component {
         return (
             <React.Fragment>
                 {this.props.children}
-                <div class="container">
+                <div className="container">
                     {this.props.notes.length > 0 || this.props.children ? (
                         <Transition
                             items={this.props.notes}
@@ -45,6 +45,8 @@ class NoteList extends React.Component {
                 <style jsx>{`
                     .container {
                         position: relative;
+                        padding-left: ${sizes.sm};
+                        padding-right: ${sizes.sm};
                     }
                     .empty-list {
                         background-color: #333;

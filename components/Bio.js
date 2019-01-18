@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { colors, fonts, sizes, linkStyles } from "../styles/base";
 
 export default props => (
@@ -8,11 +10,21 @@ export default props => (
                 <div className="created-by">created by</div>
                 <h2>Elliot de Vries</h2>
                 <p>
-                    <a>email</a> |{" "}
                     <a href="https://github.com/eadevries" target="_blank">
-                        github
-                    </a>{" "}
-                    | <a>linkedin</a>
+                        <FontAwesomeIcon icon={["fab", "github-square"]} />
+                    </a>
+                    <a
+                        href="http://www.linkedin.com/in/elliotdevries"
+                        target="_blank"
+                    >
+                        <FontAwesomeIcon icon={["fab", "linkedin"]} />
+                    </a>
+                    <a
+                        href="https://twitter.com/elliotadevries"
+                        target="_blank"
+                    >
+                        <FontAwesomeIcon icon={["fab", "twitter-square"]} />
+                    </a>
                 </p>
             </div>
         </div>
@@ -46,6 +58,12 @@ export default props => (
                 ${linkStyles}
             }
 
+            p {
+                display: flex;
+                font-size: 2.5rem;
+                justify-content: space-around;
+            }
+
             @media (min-width: ${sizes.breakpoint}) {
                 .container {
                     align-items: center;
@@ -64,6 +82,10 @@ export default props => (
                 h2 {
                     margin-bottom: ${sizes.md};
                     margin-top: ${sizes.sm};
+                }
+
+                p {
+                    font-size: 3.5rem;
                 }
             }
         `}</style>

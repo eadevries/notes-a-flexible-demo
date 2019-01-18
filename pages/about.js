@@ -9,29 +9,38 @@ const About = () => (
         <div className="container">
             <div>
                 <p>
-                    <a
-                        href="https://github.com/eadevries/notes-a-flexible-demo"
-                        target="_blank"
-                    >
-                        Notes (a flexible demo)
-                    </a>{" "}
-                    was created by Elliot de Vries.
+                    <span className="lead">
+                        <a
+                            href="https://github.com/eadevries/notes-a-flexible-demo"
+                            target="_blank"
+                        >
+                            notes
+                        </a>{" "}
+                        was created by Elliot de Vries.
+                    </span>
                 </p>
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quia blanditiis cum ducimus obcaecati esse quibusdam odio
-                    temporibus repudiandae corporis? Asperiores?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis dicta consequuntur non tenetur error obcaecati
-                    possimus molestiae suscipit totam!
+                    Elliot loves old music, guitar, coding, and real science. He
+                    spends his time surrounded by Python and JavaScript/Node.
+                    For more info, please visit his website{" "}
+                    <a href="https://elliotdevries.com" target="_blank">
+                        elliotdevries.com
+                    </a>
+                    .
                 </p>
                 <div className="contact">
                     <h3>contact</h3>
                     <p>
                         To contact Elliot about questions or opportunities,
-                        please feel free to email him at email@address.com
+                        please feel free to reach out via{" "}
+                        <a
+                            href="https://elliotdevries.com/contact"
+                            target="_blank"
+                        >
+                            this form
+                        </a>{" "}
+                        or with any of the social media accounts linked beneath
+                        the portrait.
                     </p>
                 </div>
             </div>
@@ -43,6 +52,7 @@ const About = () => (
             p {
                 line-height: 2.6rem;
                 margin-bottom: ${sizes.md};
+                text-align: justify;
             }
             a {
                 ${linkStyles}
@@ -57,10 +67,21 @@ const About = () => (
             .bio {
                 padding: ${sizes.md} 0;
             }
+            .container {
+                padding-left: ${sizes.md};
+                padding-right: ${sizes.md};
+            }
+            .lead a {
+                display: inline-block;
+                font-family: ${fonts.fancy};
+                font-size: 2.8rem;
+                padding-right: 0.5rem;
+            }
             @media (min-width: ${sizes.breakpoint}) {
                 .container {
                     display: grid;
                     grid-template-columns: 2fr 1fr;
+                    // padding: 0;
                 }
                 .bio {
                     grid-column-start: 2;
