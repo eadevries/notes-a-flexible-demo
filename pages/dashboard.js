@@ -228,7 +228,7 @@ class Dashboard extends React.Component {
                     </div>
                 </div>
                 <NoteList {...noteListProps}>
-                    {true && (
+                    {this.state.addingNote && (
                         <Transition
                             items={this.state.addingNote}
                             native
