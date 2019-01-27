@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactGA from "react-ga";
 import { Transition, animated } from "react-spring";
 
 import Header from "../components/Header";
@@ -41,6 +42,12 @@ class Dashboard extends React.Component {
     }
 
     async componentDidMount() {
+        if (!window.GAInitialized) {
+            ReactGA.initialize("UA-132781874-1");
+            window.GAInitialized = true;
+        }
+        ReactGA.pageview(window.location.pathname + window.location.search);
+
         // Primarily needed because when localStorage is used for persistance,
         // it creates an issue with hydrating SSR'd HTML if data is included
         // on very first render. Not applicable when persistant storage is

@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import ReactGA from "react-ga";
 import Switch from "react-switch";
 
 import Header from "../components/Header";
@@ -20,6 +21,12 @@ class Preferences extends React.Component {
     }
 
     async componentDidMount() {
+        if (!window.GAInitialized) {
+            ReactGA.initialize("UA-132781874-1");
+            window.GAInitialized = true;
+        }
+        ReactGA.pageview(window.location.pathname + window.location.search);
+
         // load user preferences if not loaded by SSR.
         if (this.props.userIsStale) {
             await this.props.loadUser();

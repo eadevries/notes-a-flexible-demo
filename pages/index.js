@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ReactGA from "react-ga";
 
 import Bio from "../components/Bio";
 import Header from "../components/Header";
@@ -6,6 +7,14 @@ import Layout from "../components/Layout";
 import { colors, fonts, sizes, linkStyles } from "../styles/base";
 
 class Index extends React.Component {
+    componentDidMount() {
+        if (!window.GAInitialized) {
+            ReactGA.initialize("UA-132781874-1");
+            window.GAInitialized = true;
+        }
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
     render() {
         return (
             <Layout>
